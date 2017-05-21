@@ -53,7 +53,7 @@ User.add({
 		want: { type: String, label: 'Wants...', dependsOn: deps.mentoring }
 	}
 }, 'Permissions', {
-	isAdmin: { type: Boolean, label: 'Can Admin SydJS' },
+	isAdmin: { type: Boolean, label: 'Can Admin Techpreneurs' },
 	isVerified: { type: Boolean, label: 'Has a verified email address' }
 }, 'Services', {
 	services: {
@@ -180,7 +180,7 @@ User.schema.virtual('avatarUrl').get(function() {
 	if (this.services.facebook.isConfigured && this.services.facebook.avatar) return this.services.facebook.avatar;
 	if (this.services.google.isConfigured && this.services.google.avatar) return this.services.google.avatar;
 	if (this.services.twitter.isConfigured && this.services.twitter.avatar) return this.services.twitter.avatar;
-	if (this.gravatar) return 'http://www.gravatar.com/avatar/' + this.gravatar + '?d=http%3A%2F%2Fsydjs.com%2Fimages%2Favatar.png&r=pg';
+	if (this.gravatar) return 'http://www.gravatar.com/avatar/' + this.gravatar + '?d=http%3A%2F%2Ftechpreneurs.io%2Fimages%2Favatar.png&r=pg';
 });
 
 // Usernames
@@ -205,11 +205,11 @@ User.schema.methods.resetPassword = function(callback) {
 		new keystone.Email('forgotten-password').send({
 			user: user,
 			link: '/reset-password/' + user.resetPasswordKey,
-			subject: 'Reset your SydJS Password',
+			subject: 'Reset your Techpreneurs Password',
 			to: user.email,
 			from: {
-				name: 'SydJS',
-				email: 'contact@sydjs.com'
+				name: 'Techpreneurs',
+				email: 'info@techpreneurs.io'
 			}
 		}, callback);
 	});

@@ -19,8 +19,8 @@ var pkg = require('./package.json');
 
 keystone.init({
 
-	'name': 'SydJS',
-	'brand': 'SydJS',
+	'name': 'Techpreneurs',
+	'brand': 'Techpreneurs',
 	'back': '/me',
 
 	'favicon': 'public/favicon.ico',
@@ -40,7 +40,7 @@ keystone.init({
 	'session store': 'mongo',
 	'auth': true,
 	'user model': 'User',
-	'cookie secret': process.env.COOKIE_SECRET || 'sydjs',
+	'cookie secret': process.env.COOKIE_SECRET || 'techpreneurs',
 
 	'mandrill api key': process.env.MANDRILL_KEY,
 
@@ -74,8 +74,8 @@ keystone.set('locals', {
 keystone.set('email locals', {
 	utils: keystone.utils,
 	host: (function() {
-		if (keystone.get('env') === 'staging') return 'http://sydjs-beta.herokuapp.com';
-		if (keystone.get('env') === 'production') return 'http://www.sydjs.com';
+		if (keystone.get('env') === 'staging') return 'http://techpreneurs-beta.herokuapp.com';
+		if (keystone.get('env') === 'production') return 'http://techpreneurs.io';
 		return (keystone.get('host') || 'http://localhost:') + (keystone.get('port') || '3000');
 	})()
 });
