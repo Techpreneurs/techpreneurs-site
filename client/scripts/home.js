@@ -16,3 +16,11 @@ var heroAppTarget = document.getElementById('react-hero-button');
 if (heroAppTarget) {
 	ReactDOM.render(<HeroApp />, heroAppTarget);
 }
+
+/** RSVP Toggle Button (RSVP Button) */
+
+var RSVPToggleApp = require('../components/RSVPToggleApp.js');
+var rsvpToggleAppTarget = document.getElementById('react-rsvp-toggle-button');
+if (rsvpToggleAppTarget) {
+	ReactDOM.render(<RSVPToggleApp />, rsvpToggleAppTarget);
+}

@@ -14,7 +14,7 @@ block intro
 		h2.text-center You've just deployed a new site! Go add some data :)
 	else
 		article#hero.hero-meetup.hero-meetup--next
-			
+
 			//- Intro
 			section.hero-intro.hero-intro--hasmask
 				.hero-background
@@ -23,14 +23,14 @@ block intro
 					h5.subtitle #{meetup.state == 'active' ? 'Next' : 'Last'} Meetup
 					h1.title= meetup.name
 					p.byline: strong #{meetup._.startDate.format('ddd, DD MMM YYYY')} &#8212; #{meetup._.startDate.format('h:mma')} - #{meetup._.endDate.format('h:mma')}
-					p.byline #{meetup.place} &#8212; 
+					p.byline #{meetup.place} &#8212;
 						a(href='http://maps.google.com.au/?daddr=' + (meetup.map || meetup.place), target='_blank') Directions
 				if meetup.state === 'active'
 					#react-hero-button
 			//- Details
 			section.hero-details: .container
 				.row: .col-sm-10.col-sm-offset-1: .row
-					
+
 					//- Description
 					.col-md-5
 						//- h3.mb-1 The meetup
@@ -61,11 +61,11 @@ block intro
 											.col-xs-9
 												.talk-summary
 													h5.title= talk.name
-													p.subtitle.mb-1 by 
+													p.subtitle.mb-1 by
 														each speaker, i in talk.who
 															if i
-																| , 
-															if speaker.isPublic 
+																| ,
+															if speaker.isPublic
 																a(href=speaker.url)=speaker.name.full
 															else
 																=speaker.name.full
@@ -77,7 +77,7 @@ block intro
 //- BODY
 block content
 	.page-content
-		
+
 		//- About
 		article.section.section--featured.home-about: .container
 			h2 In Sydney and into JavaScript? You need to join Techpreneurs!
@@ -89,7 +89,7 @@ block content
 						span.text-caps Join Techpreneurs now
 			p.mt-1
 				a(href='/about') Learn more about Techpreneurs
-				|  &nbsp;&middot;&nbsp; 
+				|  &nbsp;&middot;&nbsp;
 				a(href='/members') Find your friends in Techpreneurs
 			p.mt-1: a(href="https://twitter.com/techpreneurs", class="twitter-follow-button", data-show-count="true", data-size="large") Follow @techpreneurs
 //- JS

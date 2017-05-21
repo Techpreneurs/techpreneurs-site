@@ -2,7 +2,7 @@ var React = require('react');
 var request = require('superagent');
 var RSVPStore = require('../stores/RSVPStore');
 
-var HeroApp = React.createClass({
+var RSVPToggleApp = React.createClass({
 
 	getInitialState: function() {
 		return {
@@ -37,15 +37,15 @@ var HeroApp = React.createClass({
 
 	renderWelcome: function() {
 		if (this.state.rsvp.attending) {
-			return <h4 className="hero-button-title"><span className = "welcome-message">We have your RSVP</span></h4>
+			return <h4 className="rsvp-button-title"><span className = "welcome-message">We have your RSVP</span></h4>
 		} else {
-			return <h4 className="hero-button-title">Are you coming? <br /> <span className="spots-left">{this.state.meetup.remainingRSVPs}<span className="text-thin"> spots left</span></span><br /></h4>
+			return <h4 className="rsvp-button-title">Are you coming? <br /> <span className="spots-left">{this.state.meetup.remainingRSVPs}<span className="text-thin"> spots left</span></span><br /></h4>
 		}
 	},
 
 	renderLoading: function() {
 		return (
-			<div className="hero-button">
+			<div className="rsvp-button">
 				<div className="alert alert-success mb-0 text-center">Loading...</div>
 			</div>
 		);
@@ -53,7 +53,7 @@ var HeroApp = React.createClass({
 
 	renderBusy: function() {
 		return (
-			<div className="hero-button">
+			<div className="rsvp-button">
 				<div className="alert alert-success mb-0 text-center">Hold on...</div>
 			</div>
 		);
@@ -61,7 +61,7 @@ var HeroApp = React.createClass({
 
 	renderRSVPButton: function() {
 		return (
-			<div className="hero-button" onClick={this.toggleRSVP.bind(this, true)}>
+			<div className="rsvp-button" onClick={this.toggleRSVP.bind(this, true)}>
 				<a className="btn btn-primary btn-lg btn-block">
 					RSVP Now (<span className="text-thin">{this.state.meetup.remainingRSVPs} spots left</span>)
 				</a>
@@ -77,7 +77,7 @@ var HeroApp = React.createClass({
 		return (
 			<div>
 				{this.renderWelcome()}
-				<div className="hero-button">
+				<div className="rsvp-button">
 					<div id="next-meetup" data-id={this.state.meetup._id} className="form-row meetup-toggle">
 						<div className="col-xs-8">
 							<button type="button" onClick={this.toggleRSVP.bind(this, true)} className={"btn btn-lg btn-block btn-default js-rsvp-attending " + attending}>
@@ -101,7 +101,7 @@ var HeroApp = React.createClass({
 
 	renderRSVPSignin: function() {
 		return (
-			<div className="hero-button">
+			<div className="rsvp-button">
 				<a className="btn btn-primary btn-lg btn-block js-auth-trigger" onClick={this.signinModalTrigger}>RSVP Now <span className="text-thin">({this.state.meetup.remainingRSVPs} spots left)</span></a>
 			</div>
 		);
@@ -109,7 +109,7 @@ var HeroApp = React.createClass({
 
 	renderNoMoreTickets: function() {
 		return (
-			<div className="hero-button">
+			<div className="rsvp-button">
 				<div className="alert alert-success mb-0 text-center">No more tickets...</div>
 			</div>
 		);
@@ -138,4 +138,4 @@ var HeroApp = React.createClass({
 	},
 });
 
-module.exports = HeroApp;
+module.exports = RSVPToggleApp;

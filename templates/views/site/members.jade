@@ -33,13 +33,13 @@ mixin member(member)
 block content
 	.container
 		+flash-messages(messages)
-		if organisers.length
+		if organizers.length
 			.members-group
-				h3.text-caps.mb-1 Organisers
+				h3.text-caps.mb-1 Organizers
 				ul.list-unstyled.members-list
 					li.grid-sizer
-					each organiser in organisers
-						+member(organiser)
+					each organizer in organizers
+						+member(organizer)
 		if speakers.length
 			.members-group
 				h3.text-caps.mt-2.mb-1 Speakers
@@ -55,7 +55,7 @@ block content
 					each member in community
 						+member(member)
 		
-		if !organisers.length && !speakers.length && !community.length
+		if !organizers.length && !speakers.length && !community.length
 			h3.text-muted There are no members yet.
 
 block js

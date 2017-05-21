@@ -12,15 +12,15 @@ exports = module.exports = function(req, res) {
 	locals.page.title = 'Members - Techpreneurs';
 
 
-	// Load Organisers
+	// Load Organizers
 	view.on('init', function(next) {
 		User.model.find()
 		.sort('name.first')
 		.where('isPublic', true)
-		.where('isOrganiser', true)
-		.exec(function(err, organisers) {
+		.where('isOrganizer', true)
+		.exec(function(err, organizers) {
 			if (err) res.err(err);
-			locals.organisers = organisers;
+			locals.organizers = organizers;
 			next();
 		});
 	});
@@ -44,7 +44,7 @@ exports = module.exports = function(req, res) {
 	// Pluck IDs for filtering Community
 
 	view.on('init', function(next) {
-		locals.organiserIDs = _.pluck(locals.organisers, 'id');
+		locals.organizerIDs = _.pluck(locals.organizers, 'id');
 		locals.speakerIDs = _.pluck(locals.speakers, 'id');
 		next();
 	});
@@ -56,7 +56,7 @@ exports = module.exports = function(req, res) {
 		User.model.find()
 		.sort('-lastRSVP')
 		.where('isPublic', true)
-		.where('_id').nin(locals.organiserIDs)
+		.where('_id').nin(locals.organizerIDs)
 		.where('_id').nin(locals.speakerIDs)
 		.exec(function(err, community) {
 			if (err) res.err(err);

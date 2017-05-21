@@ -1,6 +1,6 @@
 var keystone = require('keystone');
 
-var Organisation = keystone.list('Organisation');
+var Organization = keystone.list('Organization');
 
 exports = module.exports = function(req, res) {
 	
@@ -9,8 +9,8 @@ exports = module.exports = function(req, res) {
 	
 	// locals.section = 'members';
 	
-	view.query('organisations', Organisation.model.find().sort('name'), 'members');
+	view.query('organizations', Organization.model.find().sort('name'), 'members');
 	
-	view.render('site/organisations');
+	view.render('site/organizations');
 	
 }

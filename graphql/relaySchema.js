@@ -26,7 +26,7 @@ var Meetup = keystone.list('Meetup');
 var Talk = keystone.list('Talk');
 var User = keystone.list('User');
 var RSVP = keystone.list('RSVP');
-var Organisation = keystone.list('Organisation');
+var Organization = keystone.list('Organization');
 
 var {nodeInterface, nodeField} = nodeDefinitions(
 	(globalId) => {
@@ -41,8 +41,8 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 			return User.model.findById(id).exec();
 		case 'RSVP':
 			return RSVP.model.findById(id).exec();
-		case 'Organisation':
-			return Organisation.model.findById(id).exec();
+		case 'Organization':
+			return Organization.model.findById(id).exec();
 		default:
 			return null;
 		}
@@ -56,8 +56,8 @@ var {nodeInterface, nodeField} = nodeDefinitions(
 			return userType;
 		} else if (obj instanceof RSVP.model) {
 			return rsvpType;
-		} else if (obj instanceof Organisation.model) {
-			return organisationType;
+		} else if (obj instanceof Organization.model) {
+			return organizationType;
 		}
 		return null;
 	}
@@ -241,10 +241,10 @@ var rsvpType = new GraphQLObjectType({
 	interfaces: [nodeInterface],
 });
 
-var organisationType = new GraphQLObjectType({
-	name: 'Organisation',
+var organizationType = new GraphQLObjectType({
+	name: 'Organization',
 	fields: () => ({
-		id: globalIdField('Organisation'),
+		id: globalIdField('Organization'),
 		name: { type: GraphQLString },
 		logo: { type: keystoneTypes.cloudinaryImage },
 		website: { type: GraphQLString },
@@ -255,7 +255,7 @@ var organisationType = new GraphQLObjectType({
 			type: userConnection,
 			args: connectionArgs,
 			resolve: ({id}, args) => connectionFromPromisedArray(
-				User.model.find().where('organisation', id).exec(),
+				User.model.find().where('organization', id).exec(),
 				args
 			),
 		},
@@ -288,10 +288,10 @@ var {
 	nodeType: rsvpType,
 });
 var {
-	connectionType: organisationConnection,
+	connectionType: organizationConnection,
 } = connectionDefinitions({
-	name: 'Organisation',
-	nodeType: organisationType,
+	name: 'Organization',
+	nodeType: organizationType,
 });
 
 function modelFieldById (objectType, keystoneModel) {
@@ -356,12 +356,12 @@ var queryRootType = new GraphQLObjectType({
 				args
 			),
 		},
-		organisation: modelFieldById(organisationType, Organisation),
-		allOrganisations: {
-			type: organisationConnection,
+		organization: modelFieldById(organizationType, Organization),
+		allOrganizations: {
+			type: organizationConnection,
 			args: connectionArgs,
 			resolve: (_, args) => connectionFromPromisedArray(
-				Organisation.model.find().exec(),
+				Organization.model.find().exec(),
 				args
 			),
 		},

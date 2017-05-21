@@ -29,9 +29,9 @@ User.add({
 	resetPasswordKey: { type: String, hidden: true }
 }, 'Profile', {
 	isPublic: { type: Boolean, default: true },
-	isOrganiser: Boolean,
+	isOrganizer: Boolean,
     isGroup: Boolean,
-	organisation: { type: Types.Relationship, ref: 'Organisation' },
+	organization: { type: Types.Relationship, ref: 'Organization' },
 	photo: { type: Types.CloudinaryImage },
 	github: { type: String, width: 'short' },
 	twitter: { type: String, width: 'short' },

@@ -1,11 +1,11 @@
 extends ../../layouts/default
 
-include ../../mixins/organisation
+include ../../mixins/organization
 
 block intro
 	.page-intro: .container
-		h1 Organisations
-		p.lead The organisations and people who are part of Techpreneurs. Should you be here? Join us!
+		h1 Organizations
+		p.lead The organizations and people who are part of Techpreneurs. Should you be here? Join us!
 		//- .buttons
 			if !user
 				a(href='/join').btn.btn-primary Join Techpreneurs
@@ -14,11 +14,11 @@ block intro
 
 block content
 	.page-content: .container
-		.organisations
-			if organisations.length
-				each org, i in organisations
+		.organizations
+			if organizations.length
+				each org, i in organizations
 					if i
 						hr
-					+organisation(org)
+					+organization(org)
 			else
-				h3.text-muted There are no organisations yet.
+				h3.text-muted There are no organizations yet.

@@ -11,11 +11,11 @@ html
 
 		//- Appstore smart banner
 		meta(name="apple-itunes-app", content="app-id=897396382")
-		
+
 		title= page.title
 		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
 		link(href="/styles/site.min.css", rel="stylesheet")
-		
+
 		if user && user.canAccessKeystone
 			link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
 
@@ -25,14 +25,14 @@ html
 	//- HTML BODY
 	body(class=section ? 'sitesection-' + section : null)
 		.site-wrapper.has-sticky-footer
-			
+
 			//- APP ALERT
 			//- if section == 'home'
 			//- 	include ../includes/layout/app-alert
 
 			//- SITE HEADER
 			include ../includes/layout/header
-			
+
 			//- SITE BODY
 			block body
 				main.site-body(role='main')
@@ -43,7 +43,7 @@ html
 						+flash-messages(messages)
 
 					block content
-						
+
 			//- SITE FOOTER
 			block footer
 				include ../includes/layout/footer
@@ -76,11 +76,11 @@ html
 
 	if user && user.canAccessKeystone
 		script(src='/keystone/js/content/editor.js')
-	
+
 	script(src='/js/ui.js')
 
-	
+
 	//- ANALYTICS
 	include ../includes/layout/analytics
-	
+
 	block js
